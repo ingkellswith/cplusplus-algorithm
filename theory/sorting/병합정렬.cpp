@@ -3,20 +3,20 @@
 
 using namespace std;
 
-// º´ÇÕ ÇÔ¼ö
+// ë³‘í•© í•¨ìˆ˜
 void merge(vector<int>& arr, int left, int mid, int right) {
-    // left, mid, right´Â ÀÎµ¦½º¸¦ ÀÇ¹ÌÇÏ´Âµ¥
-    // ÀÎµ¦½º°¡ 0,1,2,3,4,5,6,7ÀÏ °æ¿ì 7/2=3ÀÌ µÈ´Ù
-    // µû¶ó¼­ n1Àº +1À» ÇØÁØ´Ù.
-    // n1Àº ¿ŞÂÊ ÀÓ½Ã ¹è¿­ÀÇ Å©±â
+    // left, mid, rightëŠ” ì¸ë±ìŠ¤ë¥¼ ì˜ë¯¸í•˜ëŠ”ë°
+    // ì¸ë±ìŠ¤ê°€ 0,1,2,3,4,5,6,7ì¼ ê²½ìš° 7/2=3ì´ ëœë‹¤
+    // ë”°ë¼ì„œ n1ì€ +1ì„ í•´ì¤€ë‹¤.
+    // n1ì€ ì™¼ìª½ ì„ì‹œ ë°°ì—´ì˜ í¬ê¸°
     int n1 = mid - left + 1;
-    // n2´Â ¿À¸¥ÂÊ ÀÓ½Ã ¹è¿­ÀÇ Å©±â
+    // n2ëŠ” ì˜¤ë¥¸ìª½ ì„ì‹œ ë°°ì—´ì˜ í¬ê¸°
     int n2 = right - mid;
 
-    // ÀÓ½Ã ¹è¿­µéÀ» »ı¼ºÇÕ´Ï´Ù.
+    // ì„ì‹œ ë°°ì—´ë“¤ì„ ìƒì„±í•©ë‹ˆë‹¤.
     vector<int> L(n1), R(n2);
 
-    // µ¥ÀÌÅÍ¸¦ ÀÓ½Ã ¹è¿­·Î º¹»çÇÕ´Ï´Ù.
+    // ë°ì´í„°ë¥¼ ì„ì‹œ ë°°ì—´ë¡œ ë³µì‚¬í•©ë‹ˆë‹¤.
     for (int i = 0; i < n1; i++) L[i] = arr[left + i];
     for (int j = 0; j < n2; j++) R[j] = arr[mid + 1 + j];
 
@@ -32,7 +32,7 @@ void merge(vector<int>& arr, int left, int mid, int right) {
         k++;
     }
 
-    // ³²¾ÆÀÖ´Â ¿ä¼ÒµéÀ» º¹»çÇÕ´Ï´Ù.
+    // ë‚¨ì•„ìˆëŠ” ìš”ì†Œë“¤ì„ ë³µì‚¬í•©ë‹ˆë‹¤.
     while (i < n1) {
         arr[k] = L[i];
         i++;
@@ -46,7 +46,7 @@ void merge(vector<int>& arr, int left, int mid, int right) {
     }
 }
 
-// º´ÇÕ Á¤·Ä ÇÔ¼ö
+// ë³‘í•© ì •ë ¬ í•¨ìˆ˜
 void mergeSort(vector<int>& arr, int left, int right) {
     if (left >= right) return;
 

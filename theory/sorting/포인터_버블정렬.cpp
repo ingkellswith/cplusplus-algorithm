@@ -4,7 +4,7 @@ using namespace std;
 using std::setw;
 
 void printBubbles(const int bubbles[], const int n);
-void lineup(int* large, int* small);  // ÇÔ¼ö ¿øÇü º¯°æ
+void lineup(int* large, int* small);  // í•¨ìˆ˜ ì›í˜• ë³€ê²½
 
 int main()
 {
@@ -16,7 +16,7 @@ int main()
     for (int level = 0; level < n - 1; level++) {
         for (int i = 0; i < n - level - 1; i++) {
             if (bubbles[i] > bubbles[i + 1])
-                lineup(&bubbles[i], &bubbles[i + 1]);  // Æ÷ÀÎÅÍ·Î ÁÖ¼Ò Àü´Ş
+                lineup(&bubbles[i], &bubbles[i + 1]);  // í¬ì¸í„°ë¡œ ì£¼ì†Œ ì „ë‹¬
         }
     }
     cout << "\nData items in ascending order\n";
@@ -30,8 +30,8 @@ void printBubbles(const int bubbles[], const int n) {
     cout << endl;
 }
 
-void lineup(int* large, int* small) {  // Æ÷ÀÎÅÍ·Î º¯°æ
-    int save = *large;  // Æ÷ÀÎÅÍ ¿ªÂüÁ¶ÇÏ¿© °ª ÀĞ±â
-    *large = *small;    // Æ÷ÀÎÅÍ ¿ªÂüÁ¶ÇÏ¿© °ª º¯°æ
-    *small = save;      // Æ÷ÀÎÅÍ ¿ªÂüÁ¶ÇÏ¿© °ª º¯°æ
+void lineup(int* large, int* small) {  // í¬ì¸í„°ë¡œ ë³€ê²½
+    int save = *large;  // í¬ì¸í„° ì—­ì°¸ì¡°í•˜ì—¬ ê°’ ì½ê¸°
+    *large = *small;    // í¬ì¸í„° ì—­ì°¸ì¡°í•˜ì—¬ ê°’ ë³€ê²½
+    *small = save;      // í¬ì¸í„° ì—­ì°¸ì¡°í•˜ì—¬ ê°’ ë³€ê²½
 }

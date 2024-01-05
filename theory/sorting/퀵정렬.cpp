@@ -2,20 +2,20 @@
 #include <vector>
 #include <algorithm>
 
-// Äü Á¤·Ä ÇÔ¼ö
+// í€µ ì •ë ¬ í•¨ìˆ˜
 void quickSort(std::vector<int>& arr, int left, int right) {
     if (left < right) {
-        // pivotÀ» ±âÁØÀ¸·Î ºĞÇÒ
+        // pivotì„ ê¸°ì¤€ìœ¼ë¡œ ë¶„í• 
         int pivotIndex = (left + right)  / 2;
         int pivotValue = arr[pivotIndex];
 
-        // pivotValueÀ» ±âÁØÀ¸·Î arr¸¦ ºĞÇÒ
+        // pivotValueì„ ê¸°ì¤€ìœ¼ë¡œ arrë¥¼ ë¶„í• 
         int i = left, j = right;
         while (i <= j) {
-            // arr[i]¿Í pivotValue°¡ °°°Ô µÇ¸é ¹İº¹¹®À» ½ÇÇàÇÏÁö ¾ÊÀ¸¹Ç·Î i´Â pivotIndex¿Í °°À» ¼ö´Â ÀÖÀ¸³ª ±× ÀÌ»óÀÌ µÉ ¼ö´Â ¾ø´Ù. jµµ ¿ø¸®´Â ÀÌ¿Í µ¿ÀÏ.
-            // ¿ŞÂÊ¿¡¼­ ½ÃÀÛÇÏ´Â i·Î pivotValueº¸´Ù Å« Ã¹ ¹øÂ° ¿ø¼Ò¸¦ Ã£´Â´Ù
+            // arr[i]ì™€ pivotValueê°€ ê°™ê²Œ ë˜ë©´ ë°˜ë³µë¬¸ì„ ì‹¤í–‰í•˜ì§€ ì•Šìœ¼ë¯€ë¡œ iëŠ” pivotIndexì™€ ê°™ì„ ìˆ˜ëŠ” ìˆìœ¼ë‚˜ ê·¸ ì´ìƒì´ ë  ìˆ˜ëŠ” ì—†ë‹¤. jë„ ì›ë¦¬ëŠ” ì´ì™€ ë™ì¼.
+            // ì™¼ìª½ì—ì„œ ì‹œì‘í•˜ëŠ” ië¡œ pivotValueë³´ë‹¤ í° ì²« ë²ˆì§¸ ì›ì†Œë¥¼ ì°¾ëŠ”ë‹¤
             while (arr[i] < pivotValue) i++;
-            // ¿À¸¥ÂÊ¿¡¼­ ½ÃÀÛÇÏ´Â j·Î pivotValueº¸´Ù ÀÛÀº Ã¹ ¹øÂ° ¿ø¼Ò¸¦ Ã£´Â´Ù
+            // ì˜¤ë¥¸ìª½ì—ì„œ ì‹œì‘í•˜ëŠ” jë¡œ pivotValueë³´ë‹¤ ì‘ì€ ì²« ë²ˆì§¸ ì›ì†Œë¥¼ ì°¾ëŠ”ë‹¤
             while (arr[j] > pivotValue) j--;
             if (i <= j) {
                 std::swap(arr[i], arr[j]);
@@ -24,7 +24,7 @@ void quickSort(std::vector<int>& arr, int left, int right) {
             }
         }
 
-        // Àç±ÍÀûÀ¸·Î °¢ ºÎºĞ ¹è¿­À» Á¤·Ä
+        // ì¬ê·€ì ìœ¼ë¡œ ê° ë¶€ë¶„ ë°°ì—´ì„ ì •ë ¬
         quickSort(arr, left, j);
         quickSort(arr, i, right);
     }

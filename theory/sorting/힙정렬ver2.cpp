@@ -3,7 +3,7 @@
 #include <vector>
 
 void heapSort(std::vector<int>& arr) {
-    // ÈüÀ» ±¸¼º - arrÀÌ ÈüÀÌ µÈ´Ù
+    // í™ì„ êµ¬ì„± - arrì´ í™ì´ ëœë‹¤
     std::make_heap(arr.begin(), arr.end(), std::greater<int>{});
 }
 

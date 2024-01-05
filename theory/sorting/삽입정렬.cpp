@@ -1,13 +1,13 @@
 #include <iostream>
 
-// »ðÀÔ Á¤·Ä ÇÔ¼ö
+// ì‚½ìž… ì •ë ¬ í•¨ìˆ˜
 void insertionSort(int arr[], int n) {
     for (int i = 1; i < n; ++i) {
         int key = arr[i];
         int j = i - 1;
 
-        // keyº¸´Ù Å« ¸ðµç ¿ä¼Ò¸¦ ¿À¸¥ÂÊÀ¸·Î ÀÌµ¿ - Á¤·Ä ¿µ¿ª : key ÀÎµ¦½º ÀÌÇÏ
-        // index°¡ 0º¸´Ù Ä¿¾ß ÇÔ
+        // keyë³´ë‹¤ í° ëª¨ë“  ìš”ì†Œë¥¼ ì˜¤ë¥¸ìª½ìœ¼ë¡œ ì´ë™ - ì •ë ¬ ì˜ì—­ : key ì¸ë±ìŠ¤ ì´í•˜
+        // indexê°€ 0ë³´ë‹¤ ì»¤ì•¼ í•¨
         while (j >= 0 && arr[j] > key) {
             arr[j + 1] = arr[j];
             j = j - 1;
@@ -16,7 +16,7 @@ void insertionSort(int arr[], int n) {
     }
 }
 
-// ¹è¿­ ¿ä¼Ò¸¦ Ãâ·ÂÇÏ´Â ÇÔ¼ö
+// ë°°ì—´ ìš”ì†Œë¥¼ ì¶œë ¥í•˜ëŠ” í•¨ìˆ˜
 void printArray(int arr[], int size) {
     for (int i = 0; i < size; ++i) {
         std::cout << arr[i] << " ";

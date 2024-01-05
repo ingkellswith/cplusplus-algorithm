@@ -3,19 +3,19 @@
 #include <vector>
 
 void heapSort(std::vector<int>& arr) {
-    // ÈüÀ» ±¸¼º - arrÀÌ ÈüÀÌ µÈ´Ù
+    // íž™ì„ êµ¬ì„± - arrì´ íž™ì´ ëœë‹¤
     std::make_heap(arr.begin(), arr.end());
 
-    // ¾Æ·¡ ¹Ýº¹¹®À» ½ÇÇàÇÏÁö ¾ÊÀ¸¸é ³»¸²Â÷¼ø Á¤·Ä
-    // Èü¿¡¼­ °¡Àå Å« °ªÀ» °è¼ÓÇØ¼­ ²¨³»¸é¼­ Á¤·Ä
+    // ì•„ëž˜ ë°˜ë³µë¬¸ì„ ì‹¤í–‰í•˜ì§€ ì•Šìœ¼ë©´ ë‚´ë¦¼ì°¨ìˆœ ì •ë ¬
+    // íž™ì—ì„œ ê°€ìž¥ í° ê°’ì„ ê³„ì†í•´ì„œ êº¼ë‚´ë©´ì„œ ì •ë ¬
     for (int i = 0; i < arr.size()-1; i++) {
-        // ÈüÀÇ ÃÖ´ë°ª(·çÆ®)¸¦ ¹è¿­ÀÇ ¸¶Áö¸·À¸·Î º¸³¿
-        // arr.begin() + i + 1´Â ¹®¹ýÀûÀ¸·Î ±×·¯ÇÑ µíÀ¸·Î º¸ÀÎ´Ù.
+        // íž™ì˜ ìµœëŒ€ê°’(ë£¨íŠ¸)ë¥¼ ë°°ì—´ì˜ ë§ˆì§€ë§‰ìœ¼ë¡œ ë³´ëƒ„
+        // arr.begin() + i + 1ëŠ” ë¬¸ë²•ì ìœ¼ë¡œ ê·¸ëŸ¬í•œ ë“¯ìœ¼ë¡œ ë³´ì¸ë‹¤.
         std::pop_heap(arr.begin(), arr.end()-i);
 
-        // ²¨³½ ÃÖ´ë°ªÀ» ¹è¿­ÀÇ ³¡ºÎºÐ¿¡ ¹èÄ¡ (Á¤·ÄµÈ ºÎºÐÀ¸·Î Ãë±Þ)
-        // ÀÌÁ¦ arr[i]´Â Á¤·ÄµÈ »óÅÂ¸¦ °¡Áö°í ÀÖÀ½
-        // pop_heapÀº ²¨³½ ÃÖ´ë°ªÀ» ¹è¿­ÀÇ ³¡ºÎºÐ¿¡ ¹èÄ¡ÇÏ°í, pop_backÀº ±×³É popÇÑ´Ù.
+        // êº¼ë‚¸ ìµœëŒ€ê°’ì„ ë°°ì—´ì˜ ëë¶€ë¶„ì— ë°°ì¹˜ (ì •ë ¬ëœ ë¶€ë¶„ìœ¼ë¡œ ì·¨ê¸‰)
+        // ì´ì œ arr[i]ëŠ” ì •ë ¬ëœ ìƒíƒœë¥¼ ê°€ì§€ê³  ìžˆìŒ
+        // pop_heapì€ êº¼ë‚¸ ìµœëŒ€ê°’ì„ ë°°ì—´ì˜ ëë¶€ë¶„ì— ë°°ì¹˜í•˜ê³ , pop_backì€ ê·¸ëƒ¥ popí•œë‹¤.
     }
 }
 
