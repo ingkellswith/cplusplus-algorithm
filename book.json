@@ -1,0 +1,9 @@
+{
+  "title": "cplusplus-algorithm",
+  "outputfile": "SUMMARY.md",
+  "catalog": "all",
+  "ignores": ["answer"],
+  "unchanged": [],
+  "sortedBy": "-",
+  "disableTitleFormatting": true
+}
