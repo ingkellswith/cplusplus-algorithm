@@ -2,4 +2,4 @@
 
 - theory
   - sorting
-    * [theory](theory/sorting/sorting-theory.md)
+    * [정렬 이론](theory/sorting/SortingTheory.md)
