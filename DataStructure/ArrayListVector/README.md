@@ -1,7 +1,7 @@
 배열과 리스트 그리고 벡터
 ===
 # 11720 숫자의 합 구하기
-```
+```c++
 #include <iostream>
 using namespace std;
 int main()
@@ -22,7 +22,7 @@ int main()
 N의 범위가 int, long을 초과하므로 숫자를 char으로 취급하고, 이 char에서 '0'을 뺄셈하여 계산  
 
 # 1546 평균 구하기
-```
+```c++
 #include <iostream>
 using namespace std;
 int main()

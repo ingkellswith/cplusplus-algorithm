@@ -1,7 +1,7 @@
 자주 사용되는 함수
 ===
 형 변환
-```
+```c++
 #include <string>
 
 string sNum = "1234";
