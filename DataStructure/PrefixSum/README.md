@@ -114,3 +114,60 @@ D[i][j] = D[i][j - 1] + D[i - 1][j] - D[i - 1][j - 1] + A[i][j];
 // 이차원 구간 합 배열로부터 결과값 도출
 int result = D[x2][y2] - D[x1 - 1][y2] - D[x2][y1 - 1] + D[x1 - 1][y1 - 1];
 ```
+
+# 10986 나머지 합 구하기
+```c++
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main()
+{
+	ios::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
+
+	int N, M;
+	cin >> N >> M;
+	vector<long> S(N, 0);
+	vector<long> C(M, 0);
+	long answer = 0;
+	cin >> S[0];
+	for (int i = 1; i < N; i++)
+	{
+		int temp = 0;
+		cin >> temp;
+		S[i] = S[i - 1] + temp;
+	}
+
+	for (int i = 0; i < N; i++) { // 합 배열의 모든 값에 % 연산 수행하기
+		int remainder = S[i] % M;
+		// 0 ~ i까지의 구간 합 자체가 0일 때 정답에 더하기
+		if (remainder == 0) answer++;
+		// 나머지가 같은 인덱스의 개수 카운팅하기
+		C[remainder]++;
+	}
+	for (int i = 0; i < M; i++) {
+		if (C[i] > 1) {
+			// 나머지가 같은 인덱스 중 2개를 뽑는 경우의 수를 더하기
+			answer = answer + (C[i] * (C[i] - 1) / 2);
+		}
+	}
+	cout << answer << "\n";
+}
+
+```
+## 원리
+1. (A+B)%C는 ((A%C)+(B%C))%C)와 같다.
+2. 구간 합 배열이 S라고 가정하면 (S[j]%M)의 값과 (S[i]%M)의 값이 같다면 (S[j]-S[i])%M은 0이다.
+
+## 풀이
+1. 배열 A와 구간 합 배열 S를 생성한다.  
+배열 A : {1, 2, 3, 1, 2}  
+구간 합 배열 S : {1, 3, 6, 7, 9}
+2. 나머지 연산을 수행한 합 배열 S : {1, 0, 0, 1, 0}
+3. 값이 0인 원소를 선택하면 M으로 나누어떨어지므로 : +3
+4. 값이 0인 원소를 2개 선택하면 연속된 부분의 합을 선택한 것과 같으므로 3C2 : +3
+5. 2번 원리를 사용하면, 값이 1인 원소를 2개 선택하면 연속된 부분의 합을 선택한 것과 같으므로 2C2 : +1
+6. 모든 경우의 수 : 3 + 3 + 1 =7
+
