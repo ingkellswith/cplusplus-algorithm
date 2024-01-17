@@ -84,3 +84,62 @@ int main()
 ```
 ## 원리
 start_index, end_index를 양쪽 끝 인덱스에 위치시킨 후 각 포인터 이동
+
+
+# 1253 '좋은 수' 구하기
+```c++
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+int main()
+{
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
+    cout.tie(NULL);
+
+    int N;
+    cin >> N;
+    vector<int> A(N, 0);
+    for (int i = 0; i < N; i++) {
+        cin >> A[i];
+    }
+    sort(A.begin(), A.end());
+    int Result = 0;
+    // 1. N개의 수만큼 반복
+    for (int k = 0; k < N; k++) {
+        // 2. 양쪽 끝을 인덱스로 하는 투 포인터 알고리즘
+        long find = A[k];
+        int i = 0;
+        int j = N - 1;
+        while (i < j) {  
+            if (A[i] + A[j] == find) {  // 서로 다른 두 수의 합인지 체크
+                if (i != k && j != k) {
+                    Result++;
+                    break;
+                }
+                // 값은 정수라는 조건이 있기에 음수가 될 수 있고, 중복이 가능하기에 아래 else if문을 꼭 써줘야 한다. ex) 0 0 0 0
+                // 여기에서 '다른 수'라 함은 값이 같아도 인덱스가 다르면 다른 수로 취급한다.
+                // 예를 들어, 0 0 0 에서 세 개의 다른 수가 있는 것이다.
+                else if (i == k) {
+                    i++;
+                }
+                // j도 마찬가지의 논리
+                else if (j == k) {
+                    j--;
+                }
+            }
+            else if (A[i] + A[j] < find) {
+                i++;
+            }
+            else {
+                j--;
+            }
+        }
+    }
+    cout << Result << "\n";
+}
+```
+## 원리
+투 포인터를 사용하여 시간 복잡도를 n^2으로 만들어 풀 수 있다.
