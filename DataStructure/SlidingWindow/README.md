@@ -1,3 +1,8 @@
+슬라이딩 윈도우
+===
+
+# 12891 DNA 비밀번호
+```c++
 #include <iostream>
 #include <vector>
 #include <algorithm>
@@ -25,6 +30,7 @@ int main()
             checkSecret++;
     }
     for (int i = 0; i < P; i++) { //초기 P부분 문자열 처리 부분
+        // string의 개별 char를 이렇게 접근 가능함
         Add(A[i]);
     }
     if (checkSecret == 4)
@@ -43,6 +49,7 @@ int main()
 void Add(char c) { //새로 들어온 문자를 처리해주는 함수
     switch (c) {
     case 'A':
+        // int myArr[4]와 같은 배열은 vector<int> A(N, 0); 이렇게 선언하지 않아도 0으로 초기화된다.
         myArr[0]++;
         if (myArr[0] == checkArr[0])
             checkSecret++;
@@ -89,3 +96,49 @@ void Remove(char c) { //제거되는  문자를 처리해주는 함수
         break;
     }
 }
+```
+부분 문자열의 길이가 P이므로 O(n)의 시간 복잡도 알고리즘으로 문제를 해결해야 한다.
+
+# 12891 DNA 비밀번호
+```c++
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <deque>
+using namespace std;
+// first, second로 각 요소 접근 가능
+typedef pair<int, int> Node;
+int main()
+{
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
+    cout.tie(NULL);
+
+    int N, L;
+    cin >> N >> L;
+    deque<Node> mydeque;
+    
+    for (int i = 0; i < N; i++) {
+        int now;
+        cin >> now;
+        // 새로운 값이 들어 올 때마다 정렬하지 않고 현재 수보다 큰 값을 덱에서 제거함으로써 시간복잡도를 줄일 수 있음
+        while (mydeque.size() && mydeque.back().second > now) {
+            mydeque.pop_back();
+        }
+        // i는 인덱스, now는 현재 값이다.
+        // 그림에서고 잘 보면 push_back은 모든 단계에서 진행되는 것을 볼 수 있다.
+        mydeque.push_back(Node(i, now));
+        // 인덱스를 기준으로 범위에서 벗어난 값은 덱에서 제거
+        if (mydeque.front().first <= i - L) {
+            mydeque.pop_front();
+        }
+        cout << mydeque.front().second << ' ';
+    }
+}
+```
+(1 ≤ L ≤ N ≤ 5,000,000)이므로 정렬(NlogN)을 사용했을 경우 1,000,000 * 1,000,000^1/2(5,000,000^1/2의 근사치)을 사용하게 되어 1,000,000,000개의 연산이 되어
+시간을 초과하게 된다. 일반적으로 c++은 1초에 100,000,000개의 연산이 가능하다고 생각해야 하기 때문이다. 
+
+따라서 이 문제에서는 정렬 대신에 슬라이딩 윈도우와 deque(double ended queue)를 사용해 푼다.
+
+![img.png](img/img.png)
