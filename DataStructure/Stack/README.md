@@ -1,3 +1,9 @@
+스택
+===
+
+# 1874 스택으로 수열 만들기
+
+```c++
 #include <iostream>
 #include <vector>
 #include <stack>
@@ -12,11 +18,12 @@ int main()
     int N;
     cin >> N;
     vector<int> A(N, 0);
+    // +,- 를 담는 벡터
     vector<char> resultV;
     for (int i = 0; i < N; i++) {
         cin >> A[i];
     }
-    stack <int> myStack;
+    stack<int> myStack;
     int num = 1; // 오름차순 수
     bool result = true;
     for (int i = 0; i < A.size(); i++) {
@@ -50,3 +57,4 @@ int main()
         }
     }
 }
+```
