@@ -17,6 +17,7 @@ int main()
 
     int N;
     cin >> N;
+    // 4 3 6 8 7 5 2 1
     vector<int> A(N, 0);
     // +,- 를 담는 벡터
     vector<char> resultV;
@@ -58,3 +59,62 @@ int main()
     }
 }
 ```
+
+## 결과값은 정답, 시간초과 풀이
+```c++
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <stack>
+
+using namespace std;
+
+int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
+    cout.tie(NULL);
+
+    int N;
+    cin >> N;
+    vector<int> inputVector(N, 0);
+    stack<int> currentStack;
+    vector<char> resultVector;
+    bool result = true;
+
+    for (int i = 0; i < N; i++) {
+        cin >> inputVector[i];
+    }
+
+    int currentNumber = 1;
+    for (int i = 0; i < N; i++) {
+        int targetNumber = inputVector[i];
+        if (currentNumber <= targetNumber) {
+            while (currentNumber <= targetNumber) {
+                currentStack.push(currentNumber);
+                resultVector.push_back('+');
+                currentNumber++;
+            }
+            currentStack.pop();
+            resultVector.push_back('-');
+        } else {
+            if (currentStack.top() != targetNumber) {
+                result = false;
+                break;
+            }
+            currentStack.pop();
+            resultVector.push_back('-');
+        }
+    }
+
+    if (result) {
+        for (int i = 0; i < resultVector.size(); i++) {
+            cout << resultVector[i] << endl;
+        }
+    } else {
+        cout << "NO" << endl;
+    }
+}
+```
+## 원리
+![img.png](img/img.png)
+![img.png](img/img1.png)
