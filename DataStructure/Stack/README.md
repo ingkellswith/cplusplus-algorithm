@@ -41,7 +41,7 @@ int main()
             int n = myStack.top();
             myStack.pop();
             // 스택의 가장 위의 수가 만들어야 하는 수열의 수 보다 크다면 수열 출력 불가능
-            if (n > su) {
+            if (n != su) {
                 cout << "NO";
                 result = false;
                 break;
@@ -118,3 +118,50 @@ int main() {
 ## 원리
 ![img.png](img/img.png)
 ![img.png](img/img1.png)
+
+## 17298 오큰수
+```c++
+#include <iostream>
+#include <vector>
+#include <stack>
+using namespace std;
+
+int main()
+{
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
+    cout.tie(NULL);
+
+    int N;
+    cin >> N;
+    vector<int> A(N, 0);
+    vector<int> ans(N, 0);
+    for (int i = 0; i < N; i++) {
+        cin >> A[i];
+    }
+    stack <int> myStack;
+    myStack.push(0);
+    for (int i = 1; i < N; i++) {
+        //스택 비어있지 않고 현재 수열이 스택 TOP인덱스 가르키는 수열보다 크면
+        while (!myStack.empty() && A[myStack.top()] < A[i]) {
+            ans[myStack.top()] = A[i];  //정답 배열에 오큰수를 현재 수열로 저장하기
+            myStack.pop();
+        }
+        myStack.push(i); //신규데이터 push  
+    }
+    while (!myStack.empty()) {
+        // 반복문을 다 돌고 나왔는데 스택이 비어있지 않다면 빌 때 까지
+        ans[myStack.top()] = -1;
+        myStack.pop();
+    };
+    for (int i = 0; i < N; i++) {   // 출력
+        cout << ans[i] << " ";
+    }
+}
+```
+## 원리
+단순 중첩 반복문은 시간을 초과하므로 위와 같이 풀어야 한다.  
+핵심 원리는 '스택에 새로 들어오는 수가 top에 존재하는 수보다 크면 그 수는 오큰수가 된다는 것'이다.  
+(손으로 풀어본 후 코드를 봐야 한다.)  
+
+손으로 풀어보면 스택에서 pop할 때 answer vector에 값을 넣어주면 되는 것을 확인할 수 있다.

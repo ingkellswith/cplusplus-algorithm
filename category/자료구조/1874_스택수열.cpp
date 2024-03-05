@@ -33,7 +33,7 @@ int main()
             int n = myStack.top();
             myStack.pop();
             // 스택의 가장 위의 수가 만들어야 하는 수열의 수 보다 크다면 수열 출력 불가능
-            if (n > su) {
+            if (n != su) {
                 cout << "NO";
                 result = false;
                 break;

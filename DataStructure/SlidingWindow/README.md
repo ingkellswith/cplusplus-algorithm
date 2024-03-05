@@ -99,7 +99,7 @@ void Remove(char c) { //제거되는  문자를 처리해주는 함수
 ```
 부분 문자열의 길이가 P이므로 O(n)의 시간 복잡도 알고리즘으로 문제를 해결해야 한다.
 
-# 12891 DNA 비밀번호
+# 11003 최솟값 찾기 1
 ```c++
 #include <iostream>
 #include <vector>
