@@ -165,3 +165,89 @@ int main()
 (손으로 풀어본 후 코드를 봐야 한다.)  
 
 손으로 풀어보면 스택에서 pop할 때 answer vector에 값을 넣어주면 되는 것을 확인할 수 있다.
+
+## 2164 카드 게임
+```c++
+#include <iostream>
+#include <queue>
+using namespace std;
+
+int main()
+{
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
+    cout.tie(NULL);
+
+    int N;
+    cin >> N;
+    queue<int> A;
+
+    for(int i=0;i<N;i++){
+        A.push(i+1);
+    }
+
+    while(A.size()>=2){
+        A.pop();
+        int a = A.front();
+        A.pop();
+        A.push(a);
+    }
+
+    cout << A.front();
+}
+```
+## 원리
+자바의 ArrayList<>의 add와 같이 push됨을 기억하자.  
+![img.png](img/img2.png)
+
+## 2164 카드 게임
+```c++
+#include <iostream>
+#include <queue>
+using namespace std;
+
+struct compare {
+    bool operator()(int o1, int o2) {
+        int first_abs = abs(o1);
+        int second_abs = abs(o2);
+        if (first_abs == second_abs)
+            return o1 > o2;// 절대값이 같은 경우 음수 우선 정렬
+        else
+            return first_abs > second_abs;// 절대값을 기준으로 정렬
+    }
+};
+
+int main()
+{
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
+    cout.tie(NULL);
+
+    // 우선순위 큐 선언방식: <자료형, 구현체, 비교함수명>
+    priority_queue<int, vector<int>, compare> MyQueue;
+
+    int N;
+    cin >> N;
+    for (int i = 0; i < N; i++) {
+        int request;
+        cin >> request;
+        if (request == 0) {
+            if (MyQueue.empty()) {
+                cout << "0\n";
+            }
+            else {
+                cout << MyQueue.top() << '\n';
+                MyQueue.pop();
+            }
+        }
+        else {
+            MyQueue.push(request);
+        }
+    }
+}
+```
+## 원리
+우선순위 큐를 알고 있는지와, compare 함수 객체를 커스텀할 수 있는지 묻는 문제이다.
+
+bool operator()는 C++에서 함수 객체(Functor)를 만들 때 사용되는 특별한 멤버 함수이다. 이 함수를 정의함으로써 해당 객체를 함수처럼 호출할 수 있게 된다.
+C++에서 함수 객체는 클래스나 구조체 안에 operator()를 정의함으로써 함수처럼 동작하도록 만들 수 있다.
