@@ -200,7 +200,7 @@ int main()
 자바의 ArrayList<>의 add와 같이 push됨을 기억하자.  
 ![img.png](img/img2.png)
 
-## 2164 카드 게임
+## 11286 절댓값 힙 구현하기
 ```c++
 #include <iostream>
 #include <queue>
