@@ -156,3 +156,101 @@ void dfs(int num, int depth) {
     visited[num]=false;
 }
 ```
+
+## 1260 DFS와 BFS
+```c++
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <queue>
+#include <stack>  // Include the stack library
+
+using namespace std;
+
+static vector < vector <int> > A;
+static vector<bool> visited;
+void DFS(int node);
+void BFS(int node);
+
+int main()
+{
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
+    cout.tie(NULL);
+
+    int N, M, Start;
+    cin >> N >> M >> Start;
+    A.resize(N+1);
+
+    for (int i = 0; i < M; i++) {
+        int s, e;
+        cin >> s >> e;
+        A[s].push_back(e);
+        A[e].push_back(s);
+    }
+
+    // Sort adjacency lists to visit nodes in numerical order
+    for (int i = 1; i <= N; i++) {
+        sort(A[i].begin(), A[i].end());
+    }
+
+    visited = vector<bool>(N+1, false); 
+    DFS(Start);
+    cout << "\n";
+    fill(visited.begin(), visited.end(), false); // Reset visited array
+    BFS(Start);
+    cout << "\n";
+}
+
+// ver1 재귀
+void DFS(int node) {
+    cout << node << " ";
+    visited[node] = true;
+    for (int i : A[node]) {
+        if (!visited[i]) {
+            DFS(i);
+        }
+    }
+}
+
+// ver2 스택
+void DFS(int node) { 
+    stack<int> mystack;
+    mystack.push(node);
+
+    while (!mystack.empty()) {
+        int now_node = mystack.top();
+        mystack.pop();
+
+        if (!visited[now_node]) {
+            cout << now_node << " ";
+            visited[now_node] = true;
+
+            // Push adjacent nodes in reverse order to maintain the order
+            for (auto it = A[now_node].rbegin(); it != A[now_node].rend(); ++it) {
+                if (!visited[*it]) {
+                    mystack.push(*it);
+                }
+            }
+        }
+    }
+}
+
+void BFS(int node) {  // BFS using queue
+    queue<int> myqueue;
+    myqueue.push(node);
+    visited[node] = true;
+
+    while (!myqueue.empty()) {
+        int now_node = myqueue.front();
+        myqueue.pop();
+        cout << now_node << " ";
+        for (int i : A[now_node]) {
+            if (!visited[i]) {
+                visited[i] = true;
+                myqueue.push(i);
+            }
+        }
+    }
+}
+```
