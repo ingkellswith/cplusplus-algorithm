@@ -1,4 +1,4 @@
-## 1260 DFS¿Í BFS
+## 1260 DFSì™€ BFS
 ```c++
 #include <iostream>
 #include <vector>
@@ -43,7 +43,7 @@ int main()
     cout << "\n";
 }
 
-// ver1 Àç±Í
+// ver1 ì¬ê·€
 void DFS(int node) {
     cout << node << " ";
     visited[node] = true;
@@ -54,7 +54,7 @@ void DFS(int node) {
     }
 }
 
-// ver2 ½ºÅÃ
+// ver2 ìŠ¤íƒ
 void DFS(int node) {
     stack<int> mystack;
     mystack.push(node);
@@ -90,7 +90,7 @@ void BFS(int node) {
 }
 ```
 
-## 2178 ¹Ì·Î Å½»öÇÏ±â
+## 2178 ë¯¸ë¡œ íƒìƒ‰í•˜ê¸°
 ```c++
 #include <iostream>
 #include <queue>
@@ -125,7 +125,7 @@ int main()
 void BFS(int i, int j) {
     queue<pair<int, int>> myqueue;
     myqueue.push(make_pair(i, j));
-    // visited ¸ÅÆ®¸¯½º¿¡¼­ 0,0Àº Ç×»ó 1ÀÌ¹Ç·Î
+    // visited ë§¤íŠ¸ë¦­ìŠ¤ì—ì„œ 0,0ì€ í•­ìƒ 1ì´ë¯€ë¡œ
     visited[i][j] = true;
     while (!myqueue.empty()) {
         int now[2];
@@ -147,9 +147,9 @@ void BFS(int i, int j) {
 }
 ```
 
-## 1167 Æ®¸®ÀÇ Áö¸§
+## 1167 íŠ¸ë¦¬ì˜ ì§€ë¦„
 
-¾ÆÀÌµğ¾î : ÀÓÀÇÀÇ ³ëµå¿¡¼­ °¡Àå ±ä °æ·Î·Î ¿¬°áµÈ ³ëµå´Â Æ®¸®ÀÇ Áö¸§¿¡ ÇØ´çÇÏ´Â µÎ ³ëµå Áß ÇÏ³ª´Ù.
+ì•„ì´ë””ì–´ : ì„ì˜ì˜ ë…¸ë“œì—ì„œ ê°€ì¥ ê¸´ ê²½ë¡œë¡œ ì—°ê²°ëœ ë…¸ë“œëŠ” íŠ¸ë¦¬ì˜ ì§€ë¦„ì— í•´ë‹¹í•˜ëŠ” ë‘ ë…¸ë“œ ì¤‘ í•˜ë‚˜ë‹¤.
 ```c++
 #include <iostream>
 #include <vector>
@@ -194,8 +194,8 @@ int main()
         if (m_distance[Max] < m_distance[i])
             Max = i;
     }
-    fill(m_distance.begin(), m_distance.end(), 0); // °Å¸® ¹è¿­ ÃÊ±âÈ­
-    fill(visited.begin(), visited.end(), false); // ¹æ¹® ¹è¿­ ÃÊ±âÈ­
+    fill(m_distance.begin(), m_distance.end(), 0); // ê±°ë¦¬ ë°°ì—´ ì´ˆê¸°í™”
+    fill(visited.begin(), visited.end(), false); // ë°©ë¬¸ ë°°ì—´ ì´ˆê¸°í™”
     BFS(Max);
     sort(m_distance.begin(), m_distance.end());
     cout << m_distance[N] << "\n";
@@ -205,7 +205,7 @@ int main()
 void BFS(int index) {
     queue<int> myqueue;
     myqueue.push(index);
-    // 2178µµ µ¿ÀÏ ¿ø¸®, ÀÏ¹İ BFS¿Í ´Ù¸¥ visited ½ÃÁ¡ À¯ÀÇ
+    // 2178ë„ ë™ì¼ ì›ë¦¬, ì¼ë°˜ BFSì™€ ë‹¤ë¥¸ visited ì‹œì  ìœ ì˜
     visited[index] = true;
 
     while (!myqueue.empty()) {
