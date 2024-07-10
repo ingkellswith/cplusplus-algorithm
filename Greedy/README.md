@@ -67,7 +67,7 @@ int main()
 }
 ```
 
-# 1744 카드 정렬하기
+# 1744 수 묶기
 ```c++
 #include <iostream>
 #include <queue>
