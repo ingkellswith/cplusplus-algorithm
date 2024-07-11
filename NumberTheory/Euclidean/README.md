@@ -133,7 +133,7 @@ void DFS(int node) { // DFS구현
 #include <cmath>
 using namespace std;
 long gcd(long a, long b);
-vector<long> Excute(long a, long b);
+vector<long> Execute(long a, long b);
 int main()
 {
     ios::sync_with_stdio(false);
@@ -153,7 +153,7 @@ int main()
     }
 }
 
-vector<long> Excute(long a, long b) {
+vector<long> Execute(long a, long b) {
     vector<long> ret(2);
     if (b == 0) {
         ret[0] = 1;
@@ -162,6 +162,7 @@ vector<long> Excute(long a, long b) {
     }
     long q = a / b;
     vector<long> v = Excute(b, a % b); 	// 재귀 형태로 호제법 수행
+    // 여기에서부터는 역계산에 대한 것
     ret[0] = v[1];  		// 역으로 올라오면서 X Y값을 계산해주는 로직
     ret[1] = v[0] - v[1] * q;
     return ret;

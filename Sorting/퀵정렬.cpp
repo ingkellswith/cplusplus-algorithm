@@ -33,7 +33,7 @@ void quickSort(std::vector<int>& arr, int left, int right) {
 int main() {
     std::vector<int> arr = { 3,8,7,2,5,1,4,6 };
 
-    std::cout << "Before sorting: ";
+    std::cout << "Before Sorting: ";
     for (int num : arr) {
         std::cout << num << " ";
     }
@@ -41,7 +41,7 @@ int main() {
 
     quickSort(arr, 0, arr.size() - 1);
 
-    std::cout << "After sorting: ";
+    std::cout << "After Sorting: ";
     for (int num : arr) {
         std::cout << num << " ";
     }
