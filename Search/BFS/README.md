@@ -88,6 +88,25 @@ void BFS(int node) {
         }
     }
 }
+
+// ver2 for 안의 if
+void BFS(int node) { 
+    queue<int> myqueue;
+    myqueue.push(node);
+    visited[node]=true;
+    cout << node << " ";
+    while (!myqueue.empty()) {
+        int now_node = myqueue.front();
+        myqueue.pop();
+        for (int i : A[now_node]) {
+          if (!visited[i]) {
+            cout << i << " ";
+            visited[i] = true;
+            myqueue.push(i);
+          }
+        }
+    }
+}
 ```
 
 ## 2178 미로 탐색하기
