@@ -69,7 +69,6 @@ int main()
             cin >> mdistance[i][j];
         }
     }
-
     
     for (int k = 0; k < N; k++) { // 플로이드 워셜 알고리즘 수행
         for (int i = 0; i < N; i++) {
@@ -78,6 +77,7 @@ int main()
             }
         }
     }
+    
     for (int i = 0; i < N; i++) {
         for (int j = 0; j < N; j++) {
             cout << mdistance[i][j] << " ";

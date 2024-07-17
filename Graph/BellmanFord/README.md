@@ -111,7 +111,9 @@ int main()
             int start = get<0>(edges[j]);
             int end = get<1>(edges[j]);
             int price = get<2>(edges[j]);
+            // 기존 벨만포드에서도 있었던 부분
             if (mdistance[start] == LONG_MIN) continue; // 시작노드가 미방문 노드이면 continue
+            // 기존 벨만포드에서 추가된 부분 
             // 시작 노드가 양수사이클에 연결된 노드라면 종료 노드도 연결 노드로 갱신
             else if (mdistance[start] == LONG_MAX)
                 mdistance[end] = LONG_MAX;
